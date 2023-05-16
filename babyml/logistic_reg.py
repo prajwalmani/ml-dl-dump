@@ -18,10 +18,12 @@ class logistic_regression:
 
         for _ in range(self.num_of_iterations):
             #y=mx+c
+            
+            cost_function=-1/m*np.sum((y*np.log(y_pred))+(1-y)np.log(1-y_pred))
             linear=np.dot(x,self.weights)+self.bias
             y_pred=self.sigmoid(y_pred)
-            dw=(-1/num_of_samples)*np.dot(x.T,(y-y_pred))
-            db=(-1/num_of_samples)*np.sum(y-y_pred)
+            dw=(1/num_of_samples)*np.dot(x.T,(y_pred-y))
+            db=(1/num_of_samples)*np.sum(y_pred-y)
 
             self.weights= self.weights- self.lr*dw
             self.bias= self.bias- self.lr*db
