@@ -15,8 +15,8 @@ class linear_regression:
         for _ in range(self.num_of_iterations):
             #y=mx+c
             y_pred=np.dot(x,self.weights)+self.bias
-            dw=(-2/num_of_samples)*np.dot(x.T,(y-y_pred))
-            db=(-2/num_of_samples)*np.sum(y-y_pred)
+            dw=(2/num_of_samples)*np.dot(x.T,(y_pred-y))
+            db=(2/num_of_samples)*np.sum(y_pred-y)
 
             self.weights= self.weights- self.lr*dw
             self.bias= self.bias- self.lr*db
